@@ -1,0 +1,11 @@
+{
+    "name": "kizi/shopify",
+    "description": "Shopify package for Laravel",
+    "authors": [
+        {
+            "name": "lamxuanbao",
+            "email": "lamxuanbao.tb@gmail.com"
+        }
+    ],
+    "require": {}
+}
