@@ -2,7 +2,7 @@
 @section('content')
     <div class="container p-5">
         <div class="text-end">
-            <a href="{{ url('admin/vector-store/create') }}">
+            <a href="{{ url('create') }}">
                 <button type="button" class="btn btn-primary">Create</button>
             </a>
         </div>
