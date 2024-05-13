@@ -71,22 +71,22 @@ services:
     ####################################################################################################
     # Mailpit
     ####################################################################################################
-    mail:
-        image: axllent/mailpit:latest
-        ports:
-        - 8025:8025
-        - 1025:1025
+#    mail:
+#        image: axllent/mailpit:latest
+#        ports:
+#        - 8025:8025
+#        - 1025:1025
 
     ####################################################################################################
     # Redis
     ####################################################################################################
-    redis:
-        image: redis:latest
-        command: redis-server --appendonly yes
-        volumes:
-        - .docker/redis/data:/data
-        ports:
-        - 6379:6379
+#    redis:
+#        image: redis:latest
+#        command: redis-server --appendonly yes
+#        volumes:
+#        - .docker/redis/data:/data
+#        ports:
+#        - 6379:6379
 
     # ####################################################################################################
     # # DATABASE (MariaDB)
@@ -133,3 +133,18 @@ services:
     #         - PGADMIN_DEFAULT_PASSWORD=password
     #     depends_on:
     #         - db
+
+    ####################################################################################################
+    # PostgreSQL
+    ####################################################################################################
+#    db:
+#         image: pgvector/pgvector:pg16
+#         ports:
+#             - 54325:5432
+#         volumes:
+#             - .docker/db/data:/var/lib/postgresql/data
+#             - .docker/db/sql:/docker-entrypoint-initdb.d
+#         environment:
+#             - POSTGRES_USER=refactorian
+#             - POSTGRES_PASSWORD=refactorian
+#             - POSTGRES_DB=refactorian

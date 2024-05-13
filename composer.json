@@ -6,8 +6,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "firegroup/python": "dev-main",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^11.0",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9"
     },
     "require-dev": {
@@ -55,7 +57,8 @@
             "php artisan key:generate",
             "php artisan config:cache",
             "npm install",
-            "npm run build"
+            "npm run build",
+            "php artisan storage:link"
         ]
     },
     "extra": {
@@ -73,5 +76,11 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "local": {
+            "type": "path",
+            "url": "./packages/firegroup/python"
+        }
+    }
 }

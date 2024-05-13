@@ -51,5 +51,11 @@ RUN composer global require "laravel/installer"
 WORKDIR /root
 RUN git clone https://github.com/seebi/dircolors-solarized
 
+RUN curl -sSL https://install.python-poetry.org | python3 -
+
+ENV PATH="/root/.local/bin:$PATH"
+
+RUN poetry config --local virtualenvs.in-project true
+
 EXPOSE 5173
 WORKDIR /var/www

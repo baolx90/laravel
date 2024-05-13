@@ -1,0 +1,26 @@
+{
+    "name": "firegroup/python",
+    "description": "Run python file",
+    "authors": [
+        {
+            "name": "lamxuanbao",
+            "email": "lamxuanbao.tb@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Firegroup\\Python\\": "src/"
+        }
+    },
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Firegroup\\Python\\ServiceProvider"
+            ],
+            "aliases": {
+                "Python": "Firegroup\\Python\\Facades\\PythonFacade"
+            }
+        }
+    }
+}
