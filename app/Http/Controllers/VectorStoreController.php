@@ -53,7 +53,7 @@ class VectorStoreController extends Controller
             ],
             'status' => Bot::UNACTIVE
         ]);
-        return redirect()->route('')
+        return redirect()->route('index')
             ->with('success', 'Post created successfully.');
     }
 
