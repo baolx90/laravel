@@ -14,6 +14,8 @@ class Bot extends Model
 
     protected $fillable = [
         'name',
+        'prompt',
+        'code',
         'data_source',
         'status',
     ];

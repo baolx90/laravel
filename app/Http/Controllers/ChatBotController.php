@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bot;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class ChatBotController extends Controller
@@ -15,10 +16,10 @@ class ChatBotController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $code)
     {
-        $bot = Bot::findOrFail($id);
-        $conversations = Cache::get('bot_'.$id, []);
+        $bot = Bot::where(['code' => $code])->firstOrFail();
+        $conversations = Cache::get('bot_'.$code, []);
         return view('pages.chatbot', compact('bot','conversations'));
     }
 }

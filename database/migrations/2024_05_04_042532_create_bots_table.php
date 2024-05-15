@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('bots', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->text('prompt');
+            $table->string('code')->unique();
             $table->jsonb('data_source')->nullable();
             $table->string('status')->default('UNACTIVE');
             $table->timestamps();

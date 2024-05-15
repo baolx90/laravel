@@ -360,6 +360,7 @@
             display: flex;
             flex-direction: column;
             min-height: 500px;
+            max-height: 500px;
         }
 
         .hidden {
@@ -413,6 +414,8 @@
     </div>
     <div class="message-input-container">
         <form id="form-chat" action="#" method="post">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+            <input type="hidden" name="collection_name" value="{{$bot->code}}"/>
             <textarea
                 name="message"
                 placeholder="Enter your message"
@@ -432,7 +435,11 @@
             const messageInput = document.querySelector(
                 'textarea[name="message"]'
             );
+            const collectionInput = document.querySelector(
+                'input[name="collection_name"]'
+            );
             const message = messageInput.value.trim();
+            const collection_name = collectionInput.value.trim();
             const chatContainer = document.querySelector(".messages");
             // Append the user's message to the chat container
             if (message) {
@@ -456,10 +463,7 @@
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                    message: message,
-                    id : {{$bot->id}}
-                }),
+                body: JSON.stringify({ message: message , collection_name : collection_name }),
             })
                 .then((response) => response.json())
                 .then((data) => {

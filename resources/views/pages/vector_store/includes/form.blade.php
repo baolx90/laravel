@@ -3,6 +3,10 @@
     <input type="text" class="form-control" name="name">
 </div>
 <div class="mb-3">
+    <label class="form-label">Prompt</label>
+    <textarea class="form-control" name="prompt"></textarea>
+</div>
+<div class="mb-3">
     <label class="form-label">Data source type Url</label>
     <input type="text" class="form-control" name="url[]">
 </div>
