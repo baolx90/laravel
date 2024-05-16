@@ -32,6 +32,13 @@ class VectorStoreController extends Controller
      */
     public function store(Request $request)
     {
+        $url = $request->get('url',[]);
+        $urlData = [];
+        foreach ($url as $item) {
+            if(!is_null($item)){
+                $urlData[] = $item;
+            }
+        }
         $request->validate([
             'name' => 'required|max:255',
         ]);
@@ -70,7 +77,7 @@ class VectorStoreController extends Controller
             'prompt' => $prompt,
             'code' => sha1(time()),
             'data_source' => [
-                'url' => $request->get('url'),
+                'url' => $urlData,
                 'file' => $dataFile,
             ],
             'status' => Bot::ACTIVE
@@ -80,7 +87,7 @@ class VectorStoreController extends Controller
             'name'=> $code,
             'prompt' => $prompt,
             'data_source' => [
-                'url' => $request->get('url'),
+                'url' => $urlData,
                 'file' => $dataFile,
             ],
         ]);
