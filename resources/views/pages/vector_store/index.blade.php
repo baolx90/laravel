@@ -12,7 +12,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Code</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Prompt</th>
                     <th scope="col">#</th>
                 </tr>
             </thead>
@@ -22,7 +22,7 @@
                         <td>{{$bot->id}}</td>
                         <td>{{$bot->name}}</td>
                         <td>{{$bot->code}}</td>
-                        <td>{{$bot->status}}</td>
+                        <td>{{$bot->prompt}}</td>
                         <td>
                             <a href="{{url('bot/'.$bot->code)}}" target="_blank">chat</a>
                         </td>
