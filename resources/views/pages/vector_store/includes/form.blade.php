@@ -18,7 +18,7 @@
 
 <div class="text-end">
     <button type="submit" class="btn btn-primary">Submit</button>
-    <a href="{{ url('admin/vector-store') }}">
+    <a href="{{ url('/') }}">
         <button type="button" class="btn btn-secondary">Cancel</button>
     </a>
 </div>
