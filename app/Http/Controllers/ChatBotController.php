@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 
 class ChatBotController extends Controller
 {
@@ -19,7 +20,10 @@ class ChatBotController extends Controller
     public function show(string $code)
     {
         $bot = Bot::where(['code' => $code])->firstOrFail();
-        $conversations = Cache::get('bot_'.$code, []);
+        $response = Http::post(env('CHATBOT_URL') . '/history', [
+            'collection_name' => $bot->code
+        ])->json();
+        $conversations = $response['messages'];
         return view('pages.chatbot', compact('bot','conversations'));
     }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\BotJob;
 use App\Models\Bot;
+use App\Models\BotUrl;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -32,10 +34,10 @@ class VectorStoreController extends Controller
      */
     public function store(Request $request)
     {
-        $url = $request->get('url',[]);
+        $url = $request->get('url', []);
         $urlData = [];
         foreach ($url as $item) {
-            if(!is_null($item)){
+            if (!is_null($item)) {
                 $urlData[] = $item;
             }
         }
@@ -43,8 +45,8 @@ class VectorStoreController extends Controller
             'name' => 'required|max:255',
         ]);
 
-        $prompt = $request->get('prompt',null);
-        if(is_null($prompt)) {
+        $prompt = $request->get('prompt', null);
+        if (is_null($prompt)) {
             $prompt = "System: You are Figo, a customer support assistant. Anwser in very customer obsesion style
             Answer the question based on the context below
             If you don't know the answer, just say I don't know.
@@ -62,35 +64,27 @@ class VectorStoreController extends Controller
 
         $dataFile = [];
         $files = $request->file("file", []);
-        foreach ($files as $file){
-            $fileName = Str::random(10).'.'.Carbon::now()->timestamp.'.' . $file->getClientOriginalExtension();
+        foreach ($files as $file) {
+            $fileName = Str::random(10) . '.' . Carbon::now()->timestamp . '.' . $file->getClientOriginalExtension();
             $file->storeAs(
                 'vector-stores',
                 $fileName,
                 ['disk' => 'public']
             );
-            $dataFile[] = asset('storage/vector-stores/'.$fileName);
+            $dataFile[] = asset('storage/vector-stores/' . $fileName);
         }
         $code = sha1(time());
-        Bot::create([
+        $bot = Bot::create([
             'name' => $request->get('name'),
             'prompt' => $prompt,
-            'code' => sha1(time()),
+            'code' => $code,
             'data_source' => [
                 'url' => $urlData,
                 'file' => $dataFile,
             ],
-            'status' => Bot::ACTIVE
+            'status' => Bot::UNACTIVE
         ]);
-
-        Http::post(env('CHATBOT_URL').'/vector-data',[
-            'name'=> $code,
-            'prompt' => $prompt,
-            'data_source' => [
-                'url' => $urlData,
-                'file' => $dataFile,
-            ],
-        ]);
+        BotJob::dispatch($bot);
 
 
         return redirect()->route('index')

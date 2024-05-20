@@ -6,18 +6,16 @@
     <style>
         @font-face {
             font-family: "ColfaxAI";
-            src:
-                url(https://cdn.openai.com/API/fonts/ColfaxAIRegular.woff2) format("woff2"),
-                url(https://cdn.openai.com/API/fonts/ColfaxAIRegular.woff) format("woff");
+            src: url(https://cdn.openai.com/API/fonts/ColfaxAIRegular.woff2) format("woff2"),
+            url(https://cdn.openai.com/API/fonts/ColfaxAIRegular.woff) format("woff");
             font-weight: normal;
             font-style: normal;
         }
 
         @font-face {
             font-family: "ColfaxAI";
-            src:
-                url(https://cdn.openai.com/API/fonts/ColfaxAIBold.woff2) format("woff2"),
-                url(https://cdn.openai.com/API/fonts/ColfaxAIBold.woff) format("woff");
+            src: url(https://cdn.openai.com/API/fonts/ColfaxAIBold.woff2) format("woff2"),
+            url(https://cdn.openai.com/API/fonts/ColfaxAIBold.woff) format("woff");
             font-weight: bold;
             font-style: normal;
         }
@@ -290,7 +288,7 @@
             align-self: flex-end;
         }
 
-        #send-btn,.send-btn {
+        #send-btn, .send-btn {
             width: 42px;
             height: 32px;
             border-radius: 4px;
@@ -313,6 +311,7 @@
             box-sizing: border-box;
             border-right: 1px solid #c5c5d2; /* Optional: border to separate from the chat section */
         }
+
         .centered-text {
             padding: 20px;
             text-align: center; /* Center the text inside the div */
@@ -399,22 +398,24 @@
 <body>
 <div class="chat-container">
     <div class="messages">
-        {{--            {% for message in chat_history %}--}}
-        {{--            <div--}}
-        {{--                class="message-role {{ 'user' if message.role == 'user' else '' }}"--}}
-        {{--            >--}}
-        {{--                {{ message.role.capitalize() }}--}}
-        {{--            </div>--}}
-        {{--            <div--}}
-        {{--                class="{{ 'user-message' if message.role == 'user' else 'assistant-message' }}"--}}
-        {{--            >--}}
-        {{--                {{ message.content }}--}}
-        {{--            </div>--}}
-        {{--            {% endfor %}--}}
+        @foreach ($conversations as $conversation)
+            @if($conversation['role'] == 'user')
+                <div class="message-role user">User</div>
+                <div class="user-message">
+                    {{$conversation['content']}}
+                </div>
+            @endif
+            @if($conversation['role'] == 'assistant')
+                <div class="message-role">Assistant</div>
+                <div class="assistant-message">
+                    {{$conversation['content']}}
+                </div>
+            @endif
+        @endforeach
     </div>
     <div class="message-input-container">
         <form id="form-chat" action="#" method="post">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+            <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
             <input type="hidden" name="collection_name" value="{{$bot->code}}"/>
             <textarea
                 name="message"
@@ -463,7 +464,7 @@
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ message: message , collection_name : collection_name }),
+                body: JSON.stringify({message: message, collection_name: collection_name}),
             })
                 .then((response) => response.json())
                 .then((data) => {
