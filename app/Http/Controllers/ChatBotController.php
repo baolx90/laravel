@@ -23,7 +23,7 @@ class ChatBotController extends Controller
         $response = Http::post(env('CHATBOT_URL') . '/history', [
             'collection_name' => $bot->code
         ])->json();
-        $conversations = $response['messages'];
+        $conversations = $response['messages'] ?? [];
         return view('pages.chatbot', compact('bot','conversations'));
     }
 }
