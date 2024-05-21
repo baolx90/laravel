@@ -40,7 +40,7 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-body">
-                                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                            <ul class="nav nav-pills mb-3" id="pills-tab{{$bot->id}}" role="tablist">
                                                 <li class="nav-item" role="presentation">
                                                     <button class="nav-link" id="pills-home-tab"
                                                             data-bs-toggle="pill" data-bs-target="#pills-home"
@@ -49,7 +49,7 @@
                                                     </button>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
-                                                    <button class="nav-link active" id="pills-profile-tab"
+                                                    <button class="nav-link active" id="pills-profile-tab{{$bot->id}}"
                                                             data-bs-toggle="pill" data-bs-target="#pills-profile"
                                                             type="button" role="tab" aria-controls="pills-profile"
                                                             aria-selected="false">Page
@@ -57,7 +57,7 @@
                                                 </li>
                                             </ul>
                                             <div class="tab-content" id="pills-tabContent">
-                                                <div class="tab-pane fade " id="pills-home" role="tabpanel"
+                                                <div class="tab-pane fade " id="pills-home{{$bot->id}}" role="tabpanel"
                                                      aria-labelledby="pills-home-tab">
                                                     <p class="chakra-text css-1s41qea">Copy and paste this code <strong>at
                                                             the end of the &lt;body&gt; tag</strong> of a page on your
@@ -71,7 +71,7 @@
                                                             defer
                                                             &gt;&lt;/script&gt;</code></p>
                                                 </div>
-                                                <div class="tab-pane fade show active" id="pills-profile" role="tabpanel"
+                                                <div class="tab-pane fade show active" id="pills-profile{{$bot->id}}" role="tabpanel"
                                                      aria-labelledby="pills-profile-tab">
                                                     <p class="chakra-text css-1ogc5ay">Copy and paste this code <strong>into
                                                             a page </strong> of your website. You may wish to change the
