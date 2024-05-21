@@ -402,13 +402,13 @@
             @if($conversation['role'] == 'user')
                 <div class="message-role user">User</div>
                 <div class="user-message">
-                    {{$conversation['content']}}
+                    {!! str_replace('\n','<br/>',$conversation['content']) !!}
                 </div>
             @endif
             @if($conversation['role'] == 'assistant')
                 <div class="message-role">Assistant</div>
                 <div class="assistant-message">
-                    {{$conversation['content']}}
+                    {!! str_replace('\n','<br/>',$conversation['content']) !!}
                 </div>
             @endif
         @endforeach
