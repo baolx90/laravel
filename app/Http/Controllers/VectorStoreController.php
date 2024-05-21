@@ -17,7 +17,7 @@ class VectorStoreController extends Controller
      */
     public function index()
     {
-        $bots = Bot::all();
+        $bots = Bot::orderBy('id','DESC')->get();
         return view('pages.vector_store.index', compact('bots'));
     }
 

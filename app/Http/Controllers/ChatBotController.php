@@ -12,8 +12,6 @@ class ChatBotController extends Controller
 {
     public function index()
     {
-        $bot = Bot::find(35);
-        BotJob::dispatch($bot);
         return view('welcome');
     }
 
