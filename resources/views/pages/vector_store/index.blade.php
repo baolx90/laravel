@@ -42,7 +42,7 @@
                                         <div class="modal-body">
                                             <ul class="nav nav-pills mb-3" id="pills-tab{{$bot->id}}" role="tablist">
                                                 <li class="nav-item" role="presentation">
-                                                    <button class="nav-link" id="pills-home-tab"
+                                                    <button class="nav-link" id="pills-home-tab{{$bot->id}}"
                                                             data-bs-toggle="pill" data-bs-target="#pills-home"
                                                             type="button" role="tab" aria-controls="pills-home"
                                                             aria-selected="true">Widget
@@ -56,7 +56,7 @@
                                                     </button>
                                                 </li>
                                             </ul>
-                                            <div class="tab-content" id="pills-tabContent">
+                                            <div class="tab-content" id="pills-tabContent{{$bot->id}}">
                                                 <div class="tab-pane fade " id="pills-home{{$bot->id}}" role="tabpanel"
                                                      aria-labelledby="pills-home-tab">
                                                     <p class="chakra-text css-1s41qea">Copy and paste this code <strong>at
