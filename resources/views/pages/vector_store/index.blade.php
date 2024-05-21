@@ -98,14 +98,4 @@
             </tbody>
         </table>
     </div>
-{{--    <script--}}
-{{--        src="https://app.wonderchat.io/scripts/wonderchat.js"--}}
-{{--        data-name="wonderchat"--}}
-{{--        data-address="app.wonderchat.io"--}}
-{{--        data-id="cltr3xjzf05bkml2jzqyc1vtq"--}}
-{{--        data-widget-size="normal"--}}
-{{--        data-widget-button-size="normal"--}}
-{{--        defer--}}
-{{--    ></script>--}}
-    <script src="http://127.0.0.1/scripts/chat.js" data-name="lamxuanbao" data-address="http://127.0.0.1" data-id="bb56e1ef81f86b3065c103cb460486680f4ccdd6" data-widget-size="normal" data-widget-button-size="normal" defer ></script>
 @stop
