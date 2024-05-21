@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\BotJob;
 use App\Models\Bot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -11,6 +12,8 @@ class ChatBotController extends Controller
 {
     public function index()
     {
+        $bot = Bot::find(35);
+        BotJob::dispatch($bot);
         return view('welcome');
     }
 

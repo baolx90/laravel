@@ -19,7 +19,11 @@
             <tbody>
             @foreach($bots as $bot)
                 <tr>
-                    <td>{{$bot->name}}</td>
+                    <td>
+                        <a href="{{ url($bot->id.'/edit') }}">
+                            {{$bot->name}}
+                        </a>
+                    </td>
                     <td>{{$bot->code}}</td>
                     <td>{{$bot->prompt}}</td>
                     <td>{{$bot->status}}</td>

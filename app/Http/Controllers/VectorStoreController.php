@@ -93,7 +93,8 @@ Answer the question based on the context below, and if the question can't be ans
      */
     public function edit(string $id)
     {
-        //
+        $bot = Bot::findOrFail($id);
+        return view('pages.vector_store.update',compact('bot'));
     }
 
     /**
@@ -101,7 +102,21 @@ Answer the question based on the context below, and if the question can't be ans
      */
     public function update(Request $request, string $id)
     {
-        //
+        $prompt = $request->get('prompt', null);
+        if (is_null($prompt)) {
+            $prompt = "You are an AI assistant. You are helpful, professional, clever, and friendly. Do not answer any questions not related to the knowledge base.
+Answer the question based on the context below, and if the question can't be answered based on the context, say \"I don't know\"";
+        }
+        $bot = Bot::findOrFail($id);
+        $bot->prompt = $prompt;
+        $bot->save();
+
+        Http::post(env('CHATBOT_URL') . '/vector-data', [
+            'name' => $bot->code,
+            'prompt' => $bot->prompt
+        ]);
+        return redirect()->route('index')
+            ->with('success', 'Post created successfully.');
     }
 
     /**
