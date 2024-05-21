@@ -22,37 +22,37 @@ function isCrossOriginFrame(iframe = undefined) {
 
 const oldOverflow = document?.body?.style?.overflow ?? "";
 
-const wonderchatScript = document.querySelector(
-    "script[data-name='wonderchat']"
+const chatScript = document.querySelector(
+    "script[data-name='lamxuanbao']"
 );
 
-const offsetBottom = wonderchatScript?.getAttribute(
+const offsetBottom = chatScript?.getAttribute(
     "data-widget-offset-bottom"
 );
-const offsetRight = wonderchatScript?.getAttribute("data-widget-offset-right");
-const placement = wonderchatScript?.getAttribute("data-placement") || "right";
-let wonderchatId = wonderchatScript?.getAttribute("data-id");
+const offsetRight = chatScript?.getAttribute("data-widget-offset-right");
+const placement = chatScript?.getAttribute("data-placement") || "right";
+let wonderchatId = chatScript?.getAttribute("data-id");
 
-const wonderchatAddress = wonderchatScript?.getAttribute("data-address");
-const greeting = wonderchatScript?.getAttribute("greeting");
-const dataGreeting = wonderchatScript?.getAttribute("data-greeting");
-const dataIgnorePaths = wonderchatScript?.getAttribute("data-ignore-paths");
-const dataHeaderHidden = wonderchatScript?.getAttribute("data-header-hidden");
-const dataLanguage = wonderchatScript?.getAttribute("data-language");
-const dataContext = wonderchatScript?.getAttribute("data-context");
-const dataUserId = wonderchatScript?.getAttribute("data-user-id");
-const dataCustomCss = wonderchatScript?.getAttribute("data-custom-css");
-const dataWidgetMovable = wonderchatScript?.getAttribute("data-movable");
+const chatAddress = chatScript?.getAttribute("data-address");
+const greeting = chatScript?.getAttribute("greeting");
+const dataGreeting = chatScript?.getAttribute("data-greeting");
+const dataIgnorePaths = chatScript?.getAttribute("data-ignore-paths");
+const dataHeaderHidden = chatScript?.getAttribute("data-header-hidden");
+const dataLanguage = chatScript?.getAttribute("data-language");
+const dataContext = chatScript?.getAttribute("data-context");
+const dataUserId = chatScript?.getAttribute("data-user-id");
+const dataCustomCss = chatScript?.getAttribute("data-custom-css");
+const dataWidgetMovable = chatScript?.getAttribute("data-movable");
 
-let widgetSize = wonderchatScript?.getAttribute("data-widget-size");
-let widgetButtonSize = wonderchatScript?.getAttribute(
+let widgetSize = chatScript?.getAttribute("data-widget-size");
+let widgetButtonSize = chatScript?.getAttribute(
     "data-widget-button-size"
 );
 
 const wonderchatWrapper = document.createElement("div");
 wonderchatWrapper.id = "wonderchat-wrapper";
 wonderchatWrapper.style.zIndex = "-942999";
-wonderchatWrapper.style.background = "transparent";
+wonderchatWrapper.style.background = "aqua";
 wonderchatWrapper.style.overflow = "hidden";
 wonderchatWrapper.style.position = "fixed";
 wonderchatWrapper.style.bottom = "0px";
@@ -62,8 +62,8 @@ if (placement === "left") {
     wonderchatWrapper.style.right = "0px";
 }
 
-wonderchatWrapper.style.width = "90px";
-wonderchatWrapper.style.height = "90px";
+wonderchatWrapper.style.width = "350px";
+wonderchatWrapper.style.height = "380px";
 
 if (offsetBottom) {
     wonderchatWrapper.style.marginBottom = offsetBottom;
@@ -100,7 +100,7 @@ const iframe = document.createElement("iframe");
 function getIframeUrl(chatbotId) {
     let iframeUrl = `${
         window.location.protocol === "https:" ? "https" : "http"
-    }://${removeHttp(wonderchatAddress)}/widget/${chatbotId}`;
+    }://${removeHttp(chatAddress)}/widget/${chatbotId}`;
     const urlObj = new URL(iframeUrl);
     const wonderchatParams = new URLSearchParams();
 
@@ -155,6 +155,8 @@ function changeWonderchatChatbotId(chatbotId) {
     iframe.setAttribute("src", iframeUrl);
 }
 
+console.log(wonderchatId)
+console.log(123123123)
 let iframeUrl = getIframeUrl(wonderchatId);
 
 iframe.setAttribute("src", iframeUrl);
@@ -326,7 +328,7 @@ waitForElm("#wonderchat").then((elm) => {
     window.addEventListener(
         "message",
         function (e) {
-            if (!e.origin.match(wonderchatAddress)) {
+            if (!e.origin.match(chatAddress)) {
                 return;
             }
             let type;

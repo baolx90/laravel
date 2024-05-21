@@ -42,6 +42,13 @@
                                         <div class="modal-body">
                                             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                                 <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="pills-home-tab"
+                                                            data-bs-toggle="pill" data-bs-target="#pills-home"
+                                                            type="button" role="tab" aria-controls="pills-home"
+                                                            aria-selected="true">Widget
+                                                    </button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
                                                     <button class="nav-link active" id="pills-profile-tab"
                                                             data-bs-toggle="pill" data-bs-target="#pills-profile"
                                                             type="button" role="tab" aria-controls="pills-profile"
@@ -50,6 +57,20 @@
                                                 </li>
                                             </ul>
                                             <div class="tab-content" id="pills-tabContent">
+                                                <div class="tab-pane fade " id="pills-home" role="tabpanel"
+                                                     aria-labelledby="pills-home-tab">
+                                                    <p class="chakra-text css-1s41qea">Copy and paste this code <strong>at
+                                                            the end of the &lt;body&gt; tag</strong> of a page on your
+                                                        website <br> <code class="chakra-code css-1bw4ib9">&lt;script
+                                                            src="{{env('APP_URL')}}/scripts/chat.js"
+                                                            data-name="lamxuanbao"
+                                                            data-address="{{env('APP_URL')}}"
+                                                            data-id="{{$bot->code}}"
+                                                            data-widget-size="normal"
+                                                            data-widget-button-size="normal"
+                                                            defer
+                                                            &gt;&lt;/script&gt;</code></p>
+                                                </div>
                                                 <div class="tab-pane fade show active" id="pills-profile" role="tabpanel"
                                                      aria-labelledby="pills-profile-tab">
                                                     <p class="chakra-text css-1ogc5ay">Copy and paste this code <strong>into
@@ -77,4 +98,14 @@
             </tbody>
         </table>
     </div>
+{{--    <script--}}
+{{--        src="https://app.wonderchat.io/scripts/wonderchat.js"--}}
+{{--        data-name="wonderchat"--}}
+{{--        data-address="app.wonderchat.io"--}}
+{{--        data-id="cltr3xjzf05bkml2jzqyc1vtq"--}}
+{{--        data-widget-size="normal"--}}
+{{--        data-widget-button-size="normal"--}}
+{{--        defer--}}
+{{--    ></script>--}}
+    <script src="http://127.0.0.1/scripts/chat.js" data-name="lamxuanbao" data-address="http://127.0.0.1" data-id="bb56e1ef81f86b3065c103cb460486680f4ccdd6" data-widget-size="normal" data-widget-button-size="normal" defer ></script>
 @stop

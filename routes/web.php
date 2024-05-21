@@ -8,6 +8,7 @@ use App\Http\Controllers\VectorStoreController;
  Route::controller(ChatBotController::class)->group(function () {
  //    Route::get('', 'index');
      Route::get('bot/{code}', 'show');
+     Route::get('widget/{code}', 'widget');
      Route::post('bot/{code}', 'store');
  });
 

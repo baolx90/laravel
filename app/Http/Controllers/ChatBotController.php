@@ -26,4 +26,13 @@ class ChatBotController extends Controller
         $conversations = $response['messages'] ?? [];
         return view('pages.chatbot', compact('bot','conversations'));
     }
+    public function widget(string $code)
+    {
+        $bot = Bot::where(['code' => $code])->firstOrFail();
+        $response = Http::post(env('CHATBOT_URL') . '/history', [
+            'collection_name' => $bot->code
+        ])->json();
+        $conversations = $response['messages'] ?? [];
+        return view('pages.widget', compact('bot','conversations'));
+    }
 }
