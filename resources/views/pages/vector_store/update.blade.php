@@ -5,7 +5,7 @@
             @csrf
             <div class="mb-3">
                 <label class="form-label">Prompt</label>
-                <textarea class="form-control" name="prompt">{{$bot->prompt}}</textarea>
+                <textarea class="form-control" style="min-height:200px" name="prompt">{{$bot->prompt}}</textarea>
             </div>
             <div class="text-end">
                 <button type="submit" class="btn btn-primary">Submit</button>

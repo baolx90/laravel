@@ -7,7 +7,8 @@ use App\Http\Controllers\VectorStoreController;
 //Route::resource('', VectorStoreController::class);
 Route::controller(VectorStoreController::class)->group(function () {
     Route::get('', 'index')->name('index');
-    Route::post('create', 'create');
+    Route::get('create', 'create');
+    Route::post('create', 'store');
     Route::get('{id}/edit', 'edit');
     Route::post('{id}', 'update');
 });
