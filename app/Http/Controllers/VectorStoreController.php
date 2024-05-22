@@ -101,6 +101,9 @@ class VectorStoreController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'prompt' => 'required',
+        ]);
         $prompt = $request->get('prompt', null);
         if (is_null($prompt)) {
             $prompt = "You are Figo, a customer support assistant. You are helpful, professional, clever, and friendly. Do not answer any questions not related to the knowledge base.";
