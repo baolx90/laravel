@@ -43,6 +43,7 @@ class VectorStoreController extends Controller
         }
         $request->validate([
             'name' => 'required|max:255',
+            'prompt' => 'required',
         ]);
 
         $prompt = $request->get('prompt', null);
